@@ -1,0 +1,19 @@
+<MSDeploy.iisApp>
+
+	<!-- Copies content from path into the destination specified in parameters.xml and marks as an app in IIS 5.1, 6.0 and 7.x -->
+	<iisApp path="dkan" />
+
+	<!-- Set NTFS ACLs on the destination specified in parameters.xml -->
+	<setAcl path="dkan/sites/default" setAclAccess="ReadAndExecute,Write" setAclUser="anonymousAuthenticationUser" />
+	<!-- setAcl path="dkan/postinst.php" setAclAccess="ReadAndExecute,Write" setAclUser="anonymousAuthenticationUser" />
+	<setAcl path="dkan/postinst.1" setAclAccess="ReadAndExecute,Write" setAclUser="anonymousAuthenticationUser" / -->
+
+	<!-- Runs MySQL scripts to create login and assign permissions, requires command delimiter settings
+	This script runs as the database administrator provided in parameters.xml -->
+	<dbfullsql path="installSQL1.sql" transacted="false"/>
+	<dbfullsql path="installSQL2.sql" transacted="false"/>
+	<dbmysql path="install.sql" commandDelimiter="//" removeCommandDelimiter="true" />
+
+</MSDeploy.iisApp>
+
+
