@@ -200,17 +200,45 @@ class DatabaseConnection_sqlsrv extends DatabaseConnection {
     // Generate a new temporary table name and protect it from prefixing.
     // SQL Server requires that temporary tables to be non-qualified.
     $tablename = '#' . $this->generateTemporaryTableName();
+	
     $prefixes = $this->prefixes;
     $prefixes[$tablename] = '';
     $this->setPrefix($prefixes);
+	
+	$create_query = $this->tempCreateQuery($query, $tablename);
+	$query = "INSERT INTO " . $tablename  . " " . $query;
+    $this->query($create_query, array(), array());
+	$this->query($query, $args, $options);
 
-    // Replace SELECT xxx FROM table by SELECT xxx INTO #table FROM table.
-    $query = preg_replace('/^SELECT(.*?)FROM/i', 'SELECT$1 INTO ' . $tablename . ' FROM', $query);
-
-    $this->query($query, $args, $options);
     return $tablename;
   }
-
+  
+  /**
+   * Creates create query for temporary table.
+   */
+  protected function tempCreateQuery($query, $tablename) {
+    $matches = array();
+    $string = '';
+	// Remove line breaks for preg_math().
+	$query = str_replace("\n", '', $query);
+	$query = str_replace("\r\n", '', $query);
+	// Find fields.
+    preg_match("/SELECT (.*?)FROM/", $query, $matches);
+    $match = str_replace("DISTINCT ", "", $matches[1]);
+    $fields = preg_split("/,/", $match);
+    if (!array($fields)) {
+      $fields = array($fields);
+    }
+    foreach ($fields as $field) {
+      $matches = array();
+      preg_match ('/AS \[(.*?)\]/', $field, $matches);
+	  // TODO: Determine field type from database queried.
+      $string .= $matches[1] . " int,";
+    }
+	
+    return "CREATE TABLE " . $tablename . "(" . $string . ");";
+  }
+  
   /**
    * Internal function: do a manual placeholder replacement for a query.
    */
