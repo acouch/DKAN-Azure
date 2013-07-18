@@ -148,8 +148,7 @@ function rdfx_schema() {
       ),
       'description' => array(
         'description' => 'The description of the vocabulary in language',
-        'type' => 'varchar',
-        'length' => '4095',
+        'type' => 'text',
         'not null' => FALSE,
       ),
     ),
@@ -179,8 +178,7 @@ function rdfx_schema() {
       ),
       'comment' => array(
         'description' => 'The comment for term tid in language',
-        'type' => 'varchar',
-        'length' => '4095',
+        'type' => 'text',
         'not null' => FALSE,
       ),
     ),
