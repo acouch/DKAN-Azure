@@ -1,14 +1,17 @@
 #!/bin/bash
 
-git pull
-rm -rf dkan/dkan
-drush make --no-gitinfofile http://drupalcode.org/project/dkan.git/blob_plain/refs/heads/7.x-1.x:/dkan_distro.make dkan_make
-rsync -av dkan_make/ dkan/dkan/
-drush make dkan_azure.make --no-core --no-gitinfofile --contrib-destination=.
-rm -rf dkan/dkan/profiles/dkan/modules/contrib/rdfx
-cp -r modules/rdfx/ dkan/dkan/profiles/dkan/modules/contrib/rdfx
-rm -rf dkan/dkan/includes/database/sqlsrv
-cp -r modules/sqlsrv dkan/dkan/profiles/dkan/modules/contrib/sqlsrv
-cp -r modules/sqlsrv dkan/dkan/includes/database/sqlsrv
-rm -rf modules
-rm -rf dkan_make
+#git pull
+#rm -rf dkan/dkan
+#drush make --no-gitinfofile http://drupalcode.org/project/dkan.git/blob_plain/refs/heads/7.x-1.x:/dkan_distro.make dkan_make
+#rsync -av dkan_make/ dkan/dkan/
+#drush make dkan_azure.make --no-core --no-gitinfofile --contrib-destination=.
+#rm -rf dkan/dkan/profiles/dkan/modules/contrib/rdfx
+#cp -r modules/rdfx/ dkan/dkan/profiles/dkan/modules/contrib/rdfx
+#rm -rf dkan/dkan/includes/database/sqlsrv
+#cp -r modules/sqlsrv dkan/dkan/profiles/dkan/modules/contrib/sqlsrv
+#cp -r modules/sqlsrv dkan/dkan/includes/database/sqlsrv
+#rm -rf modules
+#rm -rf dkan_make
+mkdir dkan/dkan/sites/default/files
+cp settings.php dkan/dkan/sites/defaults.
+cp settings.php.orig dkan/dkan/sites/default/.
