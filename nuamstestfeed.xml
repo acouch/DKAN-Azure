@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <version>1.alpha.1</version>
+  <title>Test DKAN WebPI v2 RTW Feed</title>
+  <link href="http://www.contoso.com/SampleApplicationsFeed.xml" />
+  <updated>2013-7-21T00:00:00Z</updated>
+  <author>
+    <name>Nuams</name>
+    <uri>http://www.nuams.com/dkan</uri>
+  </author>
+  <!-- TODO -->
+  <id>http://www.contoso.com/SampleApplicationsFeed.xml</id>
+
+  <!-- Sample ASP.NET & SQL app with dependencies -->
+  <entry type="application">
+    <productId>dkanazuresql</productId>
+    <title>DKAN</title>
+    <summary>Drupal based open data portal</summary>
+    <longSummary>Share open datasets and more.</longSummary>
+	<productFamily>NuCivic Products</productFamily>
+
+
+    <!-- Defines grouping for the application based on the keyword(s) -->
+    <keywords>
+     <keywordId>SQL</keywordId>
+    </keywords>
+
+  <version>1.alpha.1</version>
+    <images>
+      <icon>http://demo.getdkan.com/profiles/dkan/images/dkan-logo.png</icon>
+    </images>
+    
+	<updated>2013-7-21T00:00:00Z</updated>
+	<published>2013-7-21T00:00:00Z</published>
+
+    <author>
+      <name>Nuams</name>
+      <uri>http://www.nuams.com</uri>
+    </author>
+    
+    <related>
+      <relatedProduct>
+        <productId>SQLExpress</productId>
+      </relatedProduct>
+    </related>
+
+    <dependency>
+      <and>
+        <dependency>
+          <productId>UrlRewrite2</productId>
+        </dependency>
+        <dependency>
+          <productId>PHP53</productId>
+        </dependency>
+		<dependency>
+          <productId>SQLExpress</productId>
+        </dependency>
+      </and>
+    </dependency>
+     
+    <!-- Installer for an application should be Web Deploy package -->
+    <installers>
+      <installer>
+        <id>1</id>
+        <!-- List of languages this package is localized in: English, Korean, Spanish, Traditional and Simplified Chinese -->
+        <languageId>en</languageId>
+        <installerFile>
+          <!-- size of the package in KBs -->
+          <fileSize>31201054</fileSize>
+          <installerURL>file://C:\Users\sheldonrampton\Desktop\dkan_azure\dkan\dkan1.zip</installerURL>
+		  <sha1>f5dbee16b6839128ba4c5c067f904d53d7c4d3da</sha1>
+          <!-- SHA of the package file for signature verification 
+		  dkan
+		   <installerURL>file://C:\Users\sheldonrampton\Desktop\dkan_azure\dkan.zip</installerURL>
+		  <sha1>8e1a97e6685b1422b3c484d48be3919906c9b598</sha1>
+		  acquiadkan
+		  <installerURL>file://C:\Users\sheldonrampton\Desktop\aquiadkan.zip</installerURL>
+          <sha1>adb309e9d8e6a4f7e0538b47f459ac20330cc5f6</sha1>
+			aquia
+          <installerURL>file://C:\Users\sheldonrampton\Desktop\aqcuia.zip</installerURL>
+		  <sha1>fa70320a1aea991342430ef167aa175f7d058847</sh
+		   -->
+        </installerFile>
+        <helpLink>http://docs.getdkan.com</helpLink>
+      <msDeploy>
+          <!-- Default page is a start page -->
+          <startPage />
+        </msDeploy>
+      </installer>
+	   <installer>
+        <id>2</id>
+        <!-- List of languages this package is localized in: English, Korean, Spanish, Traditional and Simplified Chinese -->
+        <languageId>en</languageId>
+        <installerFile>
+          <!-- size of the package in KBs -->
+          <fileSize>31201054</fileSize>
+          <installerURL>file://C:\Users\sheldonrampton\Desktop\aqcuia.zip</installerURL>
+		  <sha1>fa70320a1aea991342430ef167aa175f7d058847</sh
+		   -->
+        </installerFile>
+        <helpLink>http://docs.getdkan.com</helpLink>
+      <msDeploy>
+          <!-- Default page is a start page -->
+          <startPage />
+        </msDeploy>
+    </installers>
+  </entry>
+  
+  <tabs>
+    <tab>
+      <pillarTab>
+        <id>nuCivicTab</id>
+        <name>NuCivic Apps</name>
+        <description>NuCivic tab for my NuCivic Apps</description>
+        <pillar>
+          <id>dkanazuresql</id>
+          <name>NuCivic</name>
+          <description>Install sample product</description>
+          <groupingId>NuCivicAppGrouping</groupingId>
+          <recommended>
+            <productId>dkanazuresql</productId>
+          </recommended>
+        </pillar>
+      </pillarTab>
+	  <keywordTab>
+        <id>NuamsApps</id>
+        <name>NuCivic Apps</name>
+        <description>Select from NuCivic applications:</description>
+        <!-- Subtabs definitions -->
+        <keywords>
+          <keywordId>ASPNETApps</keywordId>
+          <keywordId>PHPApps</keywordId>
+        </keywords>
+      </keywordTab>
+    </tab>
+  </tabs>
+
+  <!-- Keyword/titles of subtabs to group apps with those keywords under -->
+  <keywords>
+    <keyword id="ASPNETApps">ASP.NET Apps</keyword>
+    <keyword id="PHPApps">PHP Apps</keyword>
+  </keywords>
+  <groupings>
+    <grouping>
+      <id>NuCivicAppGrouping</id>
+      <!-- combine products based on their productFamily attributes -->
+      <attribute>productFamily</attribute>
+      <include>
+        <item>NuCivic Products</item>
+      </include>
+    </grouping>
+  </groupings>
+</feed>
+
+
