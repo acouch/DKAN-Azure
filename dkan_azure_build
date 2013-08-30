@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#git pull
+git pull
 rm -rf dkan/dkan
 #drush make --no-gitinfofile http://drupalcode.org/project/dkan.git/blob_plain/refs/heads/7.x-1.x:/dkan_distro.make dkan_make
 drush make --no-gitinfofile dkan_distro.make dkan_make
@@ -17,3 +17,5 @@ rm -rf dkan_make
 mkdir dkan/dkan/sites/default/files
 cp settings.php dkan/dkan/sites/default/.
 cp settings.php.orig dkan/dkan/sites/default/.
+cd dkan
+zip -r dkan-"`date +%y%m%d`".zip *
