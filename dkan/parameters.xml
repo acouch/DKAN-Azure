@@ -18,6 +18,9 @@
   <parameter name = "dbServer" defaultValue = ".\SQLEXPRESS" tags = "SQL, dbServer" >
   </parameter>
 
+  <parameter name = "dbDriver"  defaultValue = "sqlsrv" tags = "SQL, dbName" >
+    </parameter>
+
   <parameter name="dbDriver" tags="SQL, hidden" defaultValue="mysql">
   </parameter>
 

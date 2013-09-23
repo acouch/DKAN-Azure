@@ -200,7 +200,7 @@
  *   );
  * @endcode
  */
-$databases = array( 'default' => array( 'default' => array ( 'database' => 'dbname', 'username' => 'dbuser', 'password' => 'dbpass', 'host' => 'dbserver', 'driver' => 'sqlsrv', 'prefix' => '' ) ) );
+$databases = array( 'default' => array( 'default' => array ( 'database' => 'dbname', 'username' => 'dbuser', 'password' => 'dbpass', 'host' => 'dbserver', 'driver' => 'dbDriver', 'prefix' => '' ) ) );
 
 /**
  * Access control for update.php script.
